@@ -1,0 +1,28 @@
+=WhereUtils
+
+Arelを拡張して検索条件を指定しやすくします。
+
+
+==インストール
+ % script/plugin install http://github.com/waco/where_utils.git
+
+==メソッド群
+===def where_kana(column, kana)
+
+ア行、カ行など、よみがなで条件を指定します
+
+helperに
+
+ include WhereUtilsHelper
+
+と記述することで、kana_linksヘルパを使うことができます。
+ビューからkana_linksを呼び出し、リンクを生成します。
+
+ <%= kana_links(url) %>
+
+==ToDo
+
+-そのうちいろいろなメソッドが増えていきます
+
+
+Copyright (c) 2011 waco, released under the MIT license
