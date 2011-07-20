@@ -25,7 +25,9 @@ module WhereUtilsHelper
     def kana_links(url_string, options = {})
       options[:separator] ||= ' | '
       url = URI.parse(url_string)
-      url_params = Rack::Utils.parse_nested_query(url.query)
+      url_params = Rack::Utils.parse_nested_query(url.query).symbolize_keys
+      url_params = url_params.merge(options[:url_params].symbolize_keys) unless options[:url_params].blank?
+      url_params.delete(:kana)
       if params.is_a? Hash
         links = WhereUtils::KANA_KEYS.map { |kana|
           params = url_params.merge(:kana => kana[:key])
